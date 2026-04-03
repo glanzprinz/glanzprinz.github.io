@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GlanzPrinz Hausmeisterservice & Gebäudereinigung</title>
+  <meta name="description" content="GlanzPrinz Hausmeisterservice & Gebäudereinigung in Kraichtal – Gebäudereinigung, Treppenhausreinigung, Haushaltsauflösung, Entrümpelung, Fensterreinigung, Gartenpflege und mehr." />
+  <style>
+    :root {
+      --blue: #0c4ea3;
+      --green: #2f8e2f;
+      --dark: #16304f;
+      --text: #334155;
+      --light: #f5f8fc;
+      --white: #ffffff;
+      --border: #dbe4ef;
+      --shadow: 0 12px 35px rgba(12, 78, 163, 0.10);
+      --radius: 22px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #ffffff;
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 2px solid transparent;
+      transition: 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue), #0a67cf);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover,
+    .btn-ghost:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--green), #45a045);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-ghost {
+      border-color: var(--blue);
+      color: var(--blue);
+      background: rgba(12, 78, 163, 0.04);
+    }
+
+    .topbar {
+      background: var(--dark);
+      color: #dbeafe;
+      font-size: 14px;
+    }
+
+    .topbar .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 24px;
+      padding: 10px 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(219, 228, 239, 0.85);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 16px 0;
+      position: relative;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: var(--shadow);
+      padding: 4px;
+    }
+
+    .brand-text strong {
+      display: block;
+      color: var(--dark);
+      font-size: 20px;
+      line-height: 1.15;
+    }
+
+    .brand-text span {
+      display: block;
+      color: #64748b;
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      border: 0;
+      font-size: 30px;
+      cursor: pointer;
+      color: var(--dark);
+    }
+
+    .hero {
+      padding: 84px 0 60px;
+      background:
+        linear-gradient(rgba(255,255,255,0.88), rgba(255,255,255,0.92)),
+        url('b4a1b913-86d1-4690-8399-8b608bbd302e.png') center/cover no-repeat;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(47, 142, 47, 0.10);
+      color: var(--green);
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      margin: 0 0 16px;
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1.06;
+      color: var(--dark);
+    }
+
+    .hero h1 .blue { color: var(--blue); }
+    .hero h1 .green { color: var(--green); }
+
+    .hero p {
+      margin: 0 0 28px;
+      font-size: 18px;
+      max-width: 720px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 26px;
+    }
+
+    .hero-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 22px;
+      font-weight: 700;
+      color: #475569;
+    }
+
+    .hero-points span::before {
+      content: '✔';
+      color: var(--green);
+      margin-right: 8px;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.96);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .hero-card img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      color: var(--dark);
+    }
+
+    .hero-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+    }
+
+    .hero-card li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+    }
+
+    .hero-card li:last-child { border-bottom: 0; }
+
+    section { padding: 82px 0; }
+
+    .section-title {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 48px;
+    }
+
+    .section-title h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 42px);
+      color: var(--dark);
+      line-height: 1.14;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: #64748b;
+      font-size: 17px;
+    }
+
+    .services {
+      background: var(--light);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .service-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .service-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .service-card .content {
+      padding: 20px;
+    }
+
+    .service-card h3 {
+      margin: 0 0 8px;
+      color: var(--dark);
+      font-size: 21px;
+    }
+
+    .service-card p {
+      margin: 0;
+      color: #64748b;
+      font-size: 15px;
+    }
+
+    .service-list-wrap {
+      margin-top: 28px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .service-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 30px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    .service-list li {
+      font-weight: 700;
+      color: var(--dark);
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .service-list li::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      position: absolute;
+      left: 0;
+      top: 10px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .about-box,
+    .contact-box,
+    .gallery-card,
+    .impressum-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+
+    .about-box h3,
+    .contact-box h3,
+    .impressum-card h3 {
+      margin-top: 0;
+      font-size: 28px;
+      color: var(--dark);
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      color: white;
+    }
+
+    .highlight-box h3,
+    .highlight-box p,
+    .highlight-box li { color: white; }
+
+    .about-box ul {
+      list-style: none;
+      padding: 0;
+      margin: 18px 0 0;
+    }
+
+    .about-box li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.20);
+      font-weight: 600;
+    }
+
+    .about-box:not(.highlight-box) li {
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .about-box li:last-child { border-bottom: 0; }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .stat {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      text-align: center;
+      background: #fff;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 30px;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .areas {
+      background: var(--light);
+    }
+
+    .area-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .area-tags span {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(12,78,163,0.05);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+    }
+
+    .gallery-card h3 {
+      margin: 0 0 16px;
+      font-size: 22px;
+      color: var(--dark);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 26px;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin: 18px 0 0;
+      padding: 0;
+    }
+
+    .contact-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+    }
+
+    .contact-list li:last-child { border-bottom: 0; }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 14px;
+      font: inherit;
+      color: var(--dark);
+      background: #fff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .form-note {
+      margin-top: 8px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .impressum-card p {
+      margin: 0 0 12px;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #dbeafe;
+      padding: 28px 0;
+    }
+
+    .footer-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 14px 24px;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    @media (max-width: 1100px) {
+      .service-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: calc(100% + 1px);
+        left: 0;
+        right: 0;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: var(--shadow);
+        padding: 18px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links.open { display: flex; }
+      .menu-btn { display: block; }
+      .stats { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding-top: 56px; }
+      .hero p { font-size: 16px; }
+      .service-grid,
+      .service-list,
+      .gallery-grid { grid-template-columns: 1fr; }
+      .brand img { width: 58px; height: 58px; }
+      .brand-text strong { font-size: 17px; }
+      .brand-text span { font-size: 12px; }
+      .about-box,
+      .contact-box,
+      .gallery-card,
+      .impressum-card,
+      .hero-card,
+      .service-list-wrap { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <span>📍 76703 Kraichtal</span>
+      <span>📞 +49 176 61297375</span>
+      <span>✉ info@glanzprinz.de</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#start">
+          <img src="Logo Glanzprinz.jpeg" alt="GlanzPrinz Logo" />
+          <div class="brand-text">
+            <strong>GlanzPrinz</strong>
+            <span>Hausmeisterservice & Gebäudereinigung</span>
+          </div>
+        </a>
+
+        <button class="menu-btn" id="menuBtn" aria-label="Menü öffnen">☰</button>
+
+        <div class="nav-links" id="navLinks">
+          <a href="#leistungen">Leistungen</a>
+          <a href="#ueber-uns">Über uns</a>
+          <a href="#vorher-nachher">Vorher / Nachher</a>
+          <a href="#kontakt">Kontakt</a>
+          <a href="#impressum">Impressum</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="start">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Zuverlässig • gründlich • schnell erreichbar</span>
+          <h1>
+            <span class="blue">Sauberkeit, Pflege</span><br />
+            und <span class="green">Rundum-Service</span>
+          </h1>
+          <p>
+            GlanzPrinz Hausmeisterservice & Gebäudereinigung aus Kraichtal bietet Ihnen professionelle Reinigung,
+            Entrümpelung, Haushaltsauflösung, Objektpflege und viele weitere Dienstleistungen aus einer Hand.
+            Für Privatkunden, Unternehmen und Hausverwaltungen.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/4917661297375" target="_blank" rel="noopener">WhatsApp schreiben</a>
+            <a class="btn btn-secondary" href="mailto:info@glanzprinz.de">E-Mail senden</a>
+            <a class="btn btn-ghost" href="#leistungen">Leistungen ansehen</a>
+          </div>
+          <div class="hero-points">
+            <span>Alles aus einer Hand</span>
+            <span>Schnelle Kontaktaufnahme</span>
+            <span>Ansprechend & gründlich</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <img src="48bea5ae-701e-444b-9b2c-6ea71ced444e.png" alt="GlanzPrinz Banner" />
+          <h3>Ihr Ansprechpartner für viele Arbeiten rund ums Objekt</h3>
+          <ul>
+            <li>Gebäudereinigung & Treppenhausreinigung</li>
+            <li>Haushaltsreinigung & Fensterreinigung</li>
+            <li>Entrümpelung & Haushaltsauflösung</li>
+            <li>Hausmeisterservice & Rundum-Objektpflege</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="services" id="leistungen">
+      <div class="container">
+        <div class="section-title">
+          <h2>Unsere Leistungen</h2>
+          <p>
+            Ob Reinigung, Pflege, Entsorgung oder kleinere Arbeiten rund ums Objekt – wir bieten Ihnen ein breites
+            Leistungsspektrum zuverlässig und professionell an.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <img src="75b22939-f0e5-4433-8465-7dc4180fd8e9.png" alt="Dienstleistungen Übersicht" />
+            <div class="content">
+              <h3>Reinigung & Pflege</h3>
+              <p>Saubere Ergebnisse für Wohnungen, Häuser, Büros, Treppenhäuser, Fenster und Außenflächen.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <img src="843962d0-39d4-449c-ae14-232c2f48c52c.png" alt="Haushaltsauflösung Vorher Nachher" />
+            <div class="content">
+              <h3>Haushaltsauflösung</h3>
+              <p>Von stark belasteten Räumen bis zur besenreinen Übergabe – alles strukturiert und gründlich erledigt.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <img src="6886b08d-9252-47e5-8c54-bb41d86626ac.png" alt="Haushaltsreinigung Vorher Nachher" />
+            <div class="content">
+              <h3>Haushaltsreinigung</h3>
+              <p>Gründliche Reinigung für Küche, Bad, Wohnbereiche und stark verschmutzte Stellen.</p>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <img src="bce70c57-dcf2-4c3a-8d67-12b10450d10f.png" alt="GlanzPrinz Logo" />
+            <div class="content">
+              <h3>Hausmeisterservice</h3>
+              <p>Zuverlässige Unterstützung bei Pflege, Betreuung und kleineren Arbeiten rund um Ihre Immobilie.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="service-list-wrap">
+          <ul class="service-list">
+            <li>Gebäudereinigung</li>
+            <li>Hausmeisterservice</li>
+            <li>Treppenhausreinigung</li>
+            <li>Entrümpelung</li>
+            <li>Haushaltsauflösung</li>
+            <li>Malerarbeiten</li>
+            <li>Haushaltsreinigung</li>
+            <li>Reparaturarbeiten</li>
+            <li>Pflastersteinreinigung</li>
+            <li>Entsorgung</li>
+            <li>Fensterreinigung</li>
+            <li>Gartenpflege</li>
+            <li>Büroreinigung</li>
+            <li>Bodenverlegung</li>
+            <li>Rundum-Objektpflege</li>
+            <li>Möbelmontage</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="ueber-uns">
+      <div class="container">
+        <div class="section-title">
+          <h2>Warum GlanzPrinz?</h2>
+          <p>
+            Wir stehen für saubere Arbeit, direkte Erreichbarkeit und ein breites Angebot für Privatkunden,
+            Unternehmen und Hausverwaltungen.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-box highlight-box">
+            <h3>Alles rund ums Objekt aus einer Hand</h3>
+            <p>
+              Statt mehrere Dienstleister zu suchen, bekommen Sie bei GlanzPrinz viele Leistungen zentral aus einer Hand –
+              praktisch, zeitsparend und unkompliziert.
+            </p>
+            <ul>
+              <li>Direkte Kommunikation per WhatsApp oder E-Mail</li>
+              <li>Flexible Einsätze im Raum Kraichtal und Umgebung</li>
+              <li>Saubere, zuverlässige und ansprechende Ausführung</li>
+              <li>Geeignet für private und gewerbliche Objekte</li>
+            </ul>
+          </div>
+
+          <div class="about-box">
+            <h3>Für wen wir arbeiten</h3>
+            <p>
+              Unser Angebot richtet sich an Privatpersonen, Eigentümer, Vermieter, Unternehmen und Hausverwaltungen,
+              die einen zuverlässigen Ansprechpartner für Reinigung, Pflege und Objektservice suchen.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <strong>16</strong>
+                <span>Leistungen</span>
+              </div>
+              <div class="stat">
+                <strong>1</strong>
+                <span>Ansprechpartner</span>
+              </div>
+              <div class="stat">
+                <strong>100%</strong>
+                <span>Direkter Kontakt</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="areas">
+      <div class="container">
+        <div class="section-title">
+          <h2>Einsatzgebiet</h2>
+          <p>
+            Wir sind in Kraichtal und Umgebung für Sie im Einsatz und dadurch flexibel und schnell erreichbar.
+          </p>
+        </div>
+        <div class="area-tags">
+          <span>Kraichtal</span>
+          <span>Bruchsal</span>
+          <span>Bretten</span>
+          <span>Karlsruhe</span>
+          <span>Pforzheim</span>
+          <span>Heilbronn</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="vorher-nachher">
+      <div class="container">
+        <div class="section-title">
+          <h2>Vorher / Nachher</h2>
+          <p>
+            Beispiele aus unseren Arbeiten. So bekommen Interessenten direkt einen Eindruck von der Wirkung unserer Leistungen.
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <article class="gallery-card">
+            <h3>Haushaltsreinigung – Waschbecken</h3>
+            <img src="6886b08d-9252-47e5-8c54-bb41d86626ac.png" alt="Vorher Nachher Waschbecken Reinigung" />
+          </article>
+
+          <article class="gallery-card">
+            <h3>Haushaltsreinigung – Dusche</h3>
+            <img src="b4a1b913-86d1-4690-8399-8b608bbd302e.png" alt="Vorher Nachher Dusche Reinigung" />
+          </article>
+
+          <article class="gallery-card">
+            <h3>Haushaltsreinigung – Boden / Fugen</h3>
+            <img src="48bea5ae-701e-444b-9b2c-6ea71ced444e.png" alt="Vorher Nachher Boden Reinigung" />
+          </article>
+
+          <article class="gallery-card">
+            <h3>Haushaltsauflösung</h3>
+            <img src="843962d0-39d4-449c-ae14-232c2f48c52c.png" alt="Vorher Nachher Haushaltsauflösung" />
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kontakt aufnehmen</h2>
+          <p>
+            Schreiben Sie uns ganz unkompliziert per WhatsApp oder E-Mail. Wir melden uns schnellstmöglich zurück.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-box">
+            <h3>Kontaktdaten</h3>
+            <ul class="contact-list">
+              <li><strong>Firma:</strong> GlanzPrinz Hausmeisterservice & Gebäudereinigung</li>
+              <li><strong>Ansprechpartner:</strong> Fiqrije Tahiraj</li>
+              <li><strong>Telefon / WhatsApp:</strong> <a href="https://wa.me/4917661297375" target="_blank" rel="noopener">+49 176 61297375</a></li>
+              <li><strong>E-Mail:</strong> <a href="mailto:info@glanzprinz.de">info@glanzprinz.de</a></li>
+              <li><strong>Standort:</strong> 76703 Kraichtal</li>
+            </ul>
+            <div class="contact-actions">
+              <a class="btn btn-primary" href="https://wa.me/4917661297375" target="_blank" rel="noopener">WhatsApp</a>
+              <a class="btn btn-secondary" href="mailto:info@glanzprinz.de">E-Mail</a>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <h3>Kontaktformular</h3>
+            <form action="mailto:info@glanzprinz.de" method="post" enctype="text/plain">
+              <div>
+                <label for="name">Name</label>
+                <input id="name" name="Name" type="text" placeholder="Ihr Name" required />
+              </div>
+              <div>
+                <label for="email">E-Mail</label>
+                <input id="email" name="E-Mail" type="email" placeholder="Ihre E-Mail" required />
+              </div>
+              <div>
+                <label for="message">Nachricht</label>
+                <textarea id="message" name="Nachricht" placeholder="Wie können wir Ihnen helfen?" required></textarea>
+              </div>
+              <button class="btn btn-ghost" type="submit">Nachricht senden</button>
+            </form>
+            <p class="form-note">Hinweis: Dieses Formular öffnet das E-Mail-Programm des Besuchers. Für ein echtes Webformular kann später PHP oder Formspree eingebunden werden.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="impressum">
+      <div class="container">
+        <div class="section-title">
+          <h2>Impressum</h2>
+          <p>Pflichtangaben für Ihre Website. Die USt-IdNr. wurde auf Wunsch weggelassen.</p>
+        </div>
+
+        <div class="impressum-card">
+          <h3>Angaben gemäß § 5 TMG</h3>
+          <p><strong>GlanzPrinz Hausmeisterservice & Gebäudereinigung</strong></p>
+          <p>Inhaberin: Fiqrije Tahiraj</p>
+          <p>Dr.-Alfred-Leitz-Str. 28<br />76703 Kraichtal</p>
+          <p>Telefon: <a href="tel:+4917661297375">+49 176 61297375</a><br />
+          E-Mail: <a href="mailto:info@glanzprinz.de">info@glanzprinz.de</a></p>
+          <p><strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</strong><br />Fiqrije Tahiraj, Anschrift wie oben.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <div>© 2026 GlanzPrinz Hausmeisterservice & Gebäudereinigung</div>
+      <div class="footer-links">
+        <a href="#leistungen">Leistungen</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="#impressum">Impressum</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    document.querySelectorAll('#navLinks a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+  </script>
+</body>
+</html>
